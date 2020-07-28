@@ -46,13 +46,14 @@ def _decode_console_output_as_bytes(parsed, **kwargs):
     parsed['OutputBytes'] = base64.b64decode(orig)
 
 
-def _get_session(access_key_id, secret_access_key, region):
+def _get_session(access_key_id, secret_access_key, region, ssl_validate=True):
     """Get EC2 session.
 
     Args:
         access_key_id: user's access key ID
         secret_access_key: user's secret access key
         region: region to login to
+        ssl_validate: whether or not to validate SSL endpoints
 
     Returns:
         boto3 session object
@@ -67,5 +68,6 @@ def _get_session(access_key_id, secret_access_key, region):
         botocore_session=mysess,
         aws_access_key_id=access_key_id,
         aws_secret_access_key=secret_access_key,
-        region_name=region
+        validate=False,
+        region_name=region,
     )

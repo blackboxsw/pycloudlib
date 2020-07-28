@@ -16,7 +16,7 @@ class EC2(BaseCloud):
     _type = 'ec2'
 
     def __init__(self, tag, access_key_id=None, secret_access_key=None,
-                 region=None):
+                 region=None, ssl_validate=True):
         """Initialize the connection to EC2.
 
         boto3 will read a users /home/$USER/.aws/* files if no
@@ -27,12 +27,16 @@ class EC2(BaseCloud):
             access_key_id: user's access key ID
             secret_access_key: user's secret access key
             region: region to login to
+            ssl_validate: whether or not to validate https endpoint
+               certificates.
         """
         super().__init__(tag)
         self._log.debug('logging into EC2')
 
         try:
-            session = _get_session(access_key_id, secret_access_key, region)
+            session = _get_session(
+                access_key_id, secret_access_key, region, ssl_validate
+            )
             self.client = session.client('ec2')
             self.resource = session.resource('ec2')
             self.region = session.region_name
