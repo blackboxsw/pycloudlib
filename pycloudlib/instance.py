@@ -30,7 +30,7 @@ class BaseInstance(ABC):
         self._sftp_client = None
         self._tmp_count = 0
 
-        self.boot_timeout = 120
+        self.boot_timeout = 300
         self.key_pair = key_pair
         self.port = '22'
         self.username = 'ubuntu'
@@ -360,6 +360,7 @@ class BaseInstance(ABC):
 
     def _wait_for_system(self):
         """Wait until system is fully booted and cloud-init has finished."""
+        self._log.debug('wait_for_system cloud-init completion')
         # runlevel 'N 2' supports distros without recent cloud-init (trusty).
         cloud_init_wait_or_runlevel_result = (
             "cloud-init status --wait > /dev/null 2>&1 || "
