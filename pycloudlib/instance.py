@@ -142,6 +142,7 @@ class BaseInstance(ABC):
         if isinstance(command, str):
             command = ['sh', '-c', command]
 
+         self._log.info('executing: %s', shell_quote(command))
         if description:
             self._log.debug(description)
         else:
@@ -376,4 +377,8 @@ class BaseInstance(ABC):
         result = self.execute(cmd, description='waiting for start')
 
         if result.failed:
-            raise OSError('cloud-init failed to start: %s' % result.stdout)
+            raise OSError(
+                'cloud-init failed to start: %s error: %s' % (
+                     result.stdout, result.stderr
+                )
+            )
