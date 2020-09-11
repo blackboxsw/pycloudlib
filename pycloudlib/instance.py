@@ -365,7 +365,8 @@ class BaseInstance(ABC):
         # runlevel 'N 2' supports distros without recent cloud-init (trusty).
         cloud_init_wait_or_runlevel_result = (
             "cloud-init status --wait > /dev/null 2>&1 || "
-            "[[ \"$(runlevel)\" = \"N 2\" ]] && [ -f /run/cloud-init/result.json ]"
+            "[ \"$(runlevel)\" = \"N 2\" ] && "
+            "[ -f /run/cloud-init/result.json ]"
         )
         cmd = (
             "i=0; while [ $i -lt {} ] && i=$(($i+1)); do {} && exit 0;"
@@ -378,7 +379,7 @@ class BaseInstance(ABC):
 
         if result.failed:
             raise OSError(
-                'cloud-init failed to start: out %s error: %s' % (
+                'cloud-init failed to start: out: %s error: %s' % (
                      result.stdout, result.stderr
                 )
             )
