@@ -142,7 +142,7 @@ class BaseInstance(ABC):
         if isinstance(command, str):
             command = ['sh', '-c', command]
 
-         self._log.info('executing: %s', shell_quote(command))
+        self._log.info('executing: %s', shell_quote(command))
         if description:
             self._log.debug(description)
         else:
