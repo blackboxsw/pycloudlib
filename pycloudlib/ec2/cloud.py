@@ -198,6 +198,10 @@ class EC2(BaseCloud):
             "KeyName": self.key_pair.name,
             "MaxCount": 1,
             "MinCount": 1,
+            "MetadataOptions": {
+                "HttpTokens": "required",
+                "InstanceMetadataTags": "enabled",
+            },
             "TagSpecifications": [
                 {
                     "ResourceType": "instance",
