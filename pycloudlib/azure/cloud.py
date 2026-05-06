@@ -606,9 +606,9 @@ class Azure(BaseCloud):
         self._log.debug("Creating Azure virtual machine: %s", name)
         try:
             vm_poller = self.compute_client.virtual_machines.begin_create_or_update(
-                self.resource_group.name,
-                name,
-                params,
+                resource_group_name=self.resource_group.name,
+                vm_name=name,
+                parameters=params,
             )
             vm_poller.wait(provisioning_timeout)
             if not vm_poller.done():
