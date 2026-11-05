@@ -33,6 +33,7 @@ UBUNTU_DAILY_IMAGES = {
     "plucky": "Canonical:ubuntu-25_04-daily:server:latest",
     "resolute": "Canonical:ubuntu-26_04-lts-daily:server:latest",
     "stonking": "Canonical:ubuntu-26_10-daily:server:latest",
+    "tenacious": "Canonical:ubuntu-27_04-daily:server:latest",
 }
 
 UBUNTU_MINIMAL_DAILY_IMAGES = {
@@ -43,6 +44,7 @@ UBUNTU_MINIMAL_DAILY_IMAGES = {
     "plucky": "Canonical:ubuntu-25_04-daily:minimal:latest",
     "resolute": "Canonical:ubuntu-26_04-lts-daily:minimal:latest",
     "stonking": "Canonical:ubuntu-26_10-daily:minimal:latest",
+    "stonking": "Canonical:ubuntu-27_04-daily:minimal:latest",
 }
 
 UBUNTU_DAILY_PRO_IMAGES = {
@@ -70,8 +72,9 @@ UBUNTU_RELEASE_IMAGES = {
     "focal": "Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest",
     "jammy": "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest",
     "noble": "Canonical:ubuntu-24_04-lts:server:latest",
-    "plucky": "Canonical:ubuntu-25_04-daily:server:latest",
+    "plucky": "Canonical:ubuntu-25_04:server:latest",
     "resolute": "Canonical:ubuntu-26_04-lts-daily:server:latest",
+    "stonking": "Canonical:ubuntu-26_10:server:latest",
 }
 
 UBUNTU_CVM_IMAGES = {
